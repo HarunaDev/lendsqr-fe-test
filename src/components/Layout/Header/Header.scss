@@ -1,0 +1,168 @@
+// Header Styles
+
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.header {
+  @include flex-between;
+  width: 100%;
+  gap: $spacing-lg;
+  padding: 10px 40px;
+
+  &__left {
+    @include flex(flex-start, center);
+    gap: $spacing-md;
+  }
+
+  &__hamburger {
+    display: none;
+    background: none;
+    border: none;
+    padding: $spacing-sm;
+    cursor: pointer;
+
+    @include respond-to('lg') {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: $text-primary;
+    }
+  }
+
+  &__logo {
+    display: none;
+
+    @include respond-to('lg') {
+      display: block;
+    }
+
+    svg {
+      height: 30px;
+      width: auto;
+    }
+  }
+
+  &__search {
+    @include flex(flex-start, center);
+    max-width: 400px;
+    width: 100%;
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  &__search-input {
+    flex: 1;
+    height: 40px;
+    padding: 0 $spacing-md;
+    border: 1px solid $input-border;
+    border-right: none;
+    border-radius: $radius-lg 0 0 $radius-lg;
+    font-size: $font-base;
+    color: $text-primary;
+    background: $bg-white;
+
+    &::placeholder {
+      color: $text-muted;
+    }
+  }
+
+  &__search-btn {
+    @include flex-center;
+    width: 56px;
+    height: 40px;
+    background-color: $primary;
+    border: none;
+    border-radius: 0 $radius-lg $radius-lg 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      color: $bg-white;
+    }
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+
+  &__right {
+    @include flex(flex-end, center);
+    gap: $spacing-xl;
+
+    @include respond-to('md') {
+      gap: $spacing-md;
+    }
+  }
+
+  &__docs {
+    color: $text-primary;
+    font-size: $font-md;
+    font-weight: $font-normal;
+    text-decoration: underline;
+    cursor: pointer;
+
+    @include respond-to('md') {
+      display: none;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__notifications {
+    position: relative;
+    cursor: pointer;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      color: $text-primary;
+    }
+  }
+
+  &__profile {
+    @include flex(flex-start, center);
+    gap: $spacing-sm;
+    cursor: pointer;
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: $secondary;
+
+    @include respond-to('md') {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__name {
+    @include flex(flex-start, center);
+    gap: $spacing-xs;
+    font-size: $font-md;
+    font-weight: $font-medium;
+    color: $text-primary;
+
+    @include respond-to('md') {
+      display: none;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

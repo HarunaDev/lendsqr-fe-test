@@ -1,0 +1,99 @@
+// Dashboard Layout Styles
+
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: $bg-main;
+//   padding: 0 40px;
+}
+
+.dashboard-sidebar {
+  width: $sidebar-width;
+  background-color: $bg-sidebar;
+  box-shadow: $shadow-sidebar;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  @include custom-scrollbar;
+
+  @include respond-to('lg') {
+    transform: translateX(-100%);
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.dashboard-main {
+  flex: 1;
+  margin-left: $sidebar-width;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to('lg') {
+    margin-left: 0;
+  }
+}
+
+.dashboard-header {
+  height: $header-height;
+  background-color: $bg-white;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  padding: 0 $spacing-xl 0 $spacing-lg;
+
+  @include respond-to('md') {
+    padding: 0 $spacing-md;
+    height: 80px;
+  }
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: $spacing-3xl;
+  
+  @include respond-to('xl') {
+    padding: $spacing-xl;
+  }
+
+  @include respond-to('md') {
+    padding: $spacing-md;
+  }
+}
+
+// Mobile overlay
+.sidebar-overlay {
+  display: none;
+
+  @include respond-to('lg') {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

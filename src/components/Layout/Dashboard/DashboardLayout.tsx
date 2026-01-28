@@ -1,9 +1,38 @@
-import { type JSX } from 'react'
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
+import Header from '../Header/Header';
+import './DashboardLayout.scss';
 
-const DashboardLayout = (): JSX.Element => {
+const DashboardLayout: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
-    <div>DashboardLayout</div>
-  )
-}
+    <div className="dashboard-layout">
+      <Sidebar />
+      {/* isOpen={isSidebarOpen} onClose={closeSidebar} */}
+      
+      <div 
+        className={`sidebar-overlay ${isSidebarOpen ? 'sidebar-overlay--visible' : ''}`}
+        onClick={closeSidebar}
+      />
 
-export default DashboardLayout
+      <div className="dashboard-main">
+        <Header onMenuClick={toggleSidebar} userName="Adedeji" />
+        <main className="dashboard-content">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default DashboardLayout;
