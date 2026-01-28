@@ -1,0 +1,172 @@
+// Lendsqr SCSS Mixins
+
+@import './variables';
+
+// Flexbox
+@mixin flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Typography
+@mixin heading($size: $font-xl, $weight: $font-semibold) {
+  font-family: $font-family-heading;
+  font-size: $size;
+  font-weight: $weight;
+  color: $text-primary;
+}
+
+@mixin body-text($size: $font-base, $weight: $font-normal) {
+  font-family: $font-family;
+  font-size: $size;
+  font-weight: $weight;
+  color: $text-secondary;
+}
+
+// Buttons
+@mixin button-primary {
+  background-color: $primary;
+  color: $bg-white;
+  border: none;
+  border-radius: $radius-lg;
+  font-family: $font-family;
+  font-size: $font-base;
+  font-weight: $font-semibold;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-outline($color: $primary) {
+  background-color: transparent;
+  color: $color;
+  border: 1px solid $color;
+  border-radius: $radius-lg;
+  font-family: $font-family;
+  font-size: $font-base;
+  font-weight: $font-semibold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba($color, 0.1);
+  }
+}
+
+// Cards
+@mixin card {
+  background: $bg-white;
+  border: 1px solid $border-color;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card;
+}
+
+// Inputs
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-md $spacing-md;
+  border: 2px solid $input-border;
+  border-radius: $radius-md;
+  font-family: $font-family;
+  font-size: $font-base;
+  color: $text-primary;
+  background: $bg-white;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &::placeholder {
+    color: $text-muted;
+    opacity: 0.6;
+  }
+
+  &:focus {
+    border-color: $primary;
+  }
+}
+
+// Status Badges
+@mixin status-badge($color, $bg) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 13px;
+  border-radius: 100px;
+  font-family: $font-family;
+  font-size: $font-sm;
+  font-weight: $font-normal;
+  color: $color;
+  background-color: $bg;
+  text-transform: capitalize;
+}
+
+// Responsive
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}
+
+// Scrollbar
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($secondary, 0.2);
+    border-radius: 3px;
+
+    &:hover {
+      background: rgba($secondary, 0.3);
+    }
+  }
+}
+
+// Truncate text
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

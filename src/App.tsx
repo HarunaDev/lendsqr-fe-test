@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login/Login";
+// import { DashboardLayout } from "./components/Layout/Dashboard/Dashboardlayout";
+// import Users from "./pages/Users/Users";
+import NotFound from "./pages/NotFound";
+import "./styles/main.scss";
+import UsersPage from "./pages/Users/UsersPage";
+import DashboardLayout from "./components/Layout/Dashboard/DashboardLayout";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<Navigate to="/dashboard/users" replace />} />
+        <Route path="users" element={<UsersPage />} />
+        <Route path="users/:userId" element={<UsersPage />} />
+        {/* Placeholder routes for other sidebar items */}
+        <Route path="*" element={<div style={{ padding: '20px', color: '#545F7D' }}>This page is under construction.</div>} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </BrowserRouter>
+);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-red-500'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+export default App;

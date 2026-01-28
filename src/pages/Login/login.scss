@@ -1,0 +1,206 @@
+// Login Page Styles
+
+// @import '../../styles/variables';
+// @import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/mixins.scss';
+
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: $bg-white;
+
+  @include respond-to('lg') {
+    flex-direction: column;
+  }
+}
+
+.login-left {
+  flex: 1;
+  padding: $spacing-xl $spacing-3xl;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-white;
+
+  @include respond-to('xl') {
+    padding: $spacing-xl $spacing-2xl;
+  }
+
+  @include respond-to('lg') {
+    padding: $spacing-lg;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-bottom: $spacing-3xl;
+
+    @include respond-to('lg') {
+      margin-bottom: $spacing-xl;
+    }
+
+    img {
+      height: 36px;
+      width: auto;
+    }
+  }
+
+  &__illustration {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xl 0;
+
+    @include respond-to('lg') {
+      display: none;
+    }
+
+    img {
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl;
+  background-color: $bg-white;
+  position: relative;
+
+  @include respond-to('xl') {
+    padding: $spacing-2xl;
+  }
+
+  @include respond-to('lg') {
+    padding: $spacing-lg;
+    flex: none;
+  }
+
+  // Decorative border
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba($secondary, 0.1) 20%,
+      rgba($secondary, 0.1) 80%,
+      transparent
+    );
+
+    @include respond-to('lg') {
+      display: none;
+    }
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 447px;
+
+  @include respond-to('lg') {
+    max-width: 400px;
+  }
+
+  &__title {
+    @include heading($font-3xl, $font-bold);
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+    font-family: $font-family-heading;
+  }
+
+  &__subtitle {
+    @include body-text($font-xl, $font-normal);
+    color: $text-secondary;
+    margin-bottom: $spacing-3xl;
+
+    @include respond-to('md') {
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__group {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__input-wrapper {
+    position: relative;
+  }
+
+  &__input {
+    @include input-base;
+    height: 50px;
+    padding: $spacing-md;
+    font-size: 14px;
+    border: 2px solid $input-border;
+    border-radius: $radius-md;
+
+    &::placeholder {
+      color: $text-muted;
+      font-size: $font-base;
+    }
+
+    &:focus {
+      border-color: $primary;
+    }
+  }
+
+  &__toggle-password {
+    position: absolute;
+    right: $spacing-md;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: $primary;
+    font-size: $font-sm;
+    font-weight: $font-semibold;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+
+  &__forgot-password {
+    display: inline-block;
+    color: $primary;
+    font-size: $font-sm;
+    font-weight: $font-semibold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: $spacing-lg;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+
+  &__submit {
+    @include button-primary;
+    width: 100%;
+    height: 48px;
+    font-size: $font-base;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__error {
+    color: $status-blacklisted;
+    font-size: $font-sm;
+    margin-top: $spacing-xs;
+  }
+}
