@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Sidebar.scss';
-import image from "../../../assets/img/lsqr-logo.png"
 
 // Icons as inline SVG components for precise control
 const BriefcaseIcon: React.FC = () => (

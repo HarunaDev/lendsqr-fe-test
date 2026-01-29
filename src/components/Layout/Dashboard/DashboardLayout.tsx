@@ -17,8 +17,8 @@ const DashboardLayout: React.FC = () => {
 
   return (
     <div className="dashboard-layout">
-      <Sidebar />
-      {/* isOpen={isSidebarOpen} onClose={closeSidebar} */}
+      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar}/>
+      
       
       <div 
         className={`sidebar-overlay ${isSidebarOpen ? 'sidebar-overlay--visible' : ''}`}
