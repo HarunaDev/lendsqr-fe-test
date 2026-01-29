@@ -101,15 +101,17 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
           <thead className="users-table__header">
             <tr className="users-table__header-row">
               <th className="users-table__header-cell" style={{ position: 'relative' }}>
-                <div ref={filterRef} style={{ display: 'inline-block' }}>
+                {/* <div ref={filterRef} style={{ display: 'inline-block' }}> */}
                   <button 
                     className="users-table__filter-btn"
                     onClick={() => setShowFilter(!showFilter)}
-                  >
-                    ORGANIZATION <FilterIcon />
+                    title="ORGANIZATION">
+                    
+                    <span className='filter-btn__text' >ORGANIZATION</span> 
+                    <FilterIcon />
                   </button>
                   {showFilter && (
-                  <div className="filter-dropdown">
+                  <div className="filter-dropdown" ref={filterRef}>
                     <div className="filter-dropdown__field">
                       <label className="filter-dropdown__label">Organization</label>
                       <select 
@@ -186,31 +188,31 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
                     </div>
                   </div>
                   )}
-                </div>
+                {/* </div> */}
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn">
-                  USERNAME <FilterIcon />
+                <button className="users-table__filter-btn" title="USERNAME">
+                  <span className='filter-btn__text'>USERNAME</span> <FilterIcon />
                 </button>
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn">
-                  EMAIL <FilterIcon />
+                <button className="users-table__filter-btn" title="EMAIL">
+                  <span className='filter-btn__text'>EMAIL</span> <FilterIcon />
                 </button>
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn">
-                  PHONE NUMBER <FilterIcon />
+                <button className="users-table__filter-btn" title="PHONE NUMBER">
+                  <span className='filter-btn__text'>PHONE NUMBER</span> <FilterIcon />
                 </button>
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn">
-                  DATE JOINED <FilterIcon />
+                <button className="users-table__filter-btn" title="DATE JOINED">
+                  <span className='filter-btn__text'>DATE JOINED</span> <FilterIcon />
                 </button>
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn">
-                  STATUS <FilterIcon />
+                <button className="users-table__filter-btn" title="STATUS">
+                  <span className='filter-btn__text'>STATUS</span> <FilterIcon />
                 </button>
               </th>
               <th className="users-table__header-cell"></th>

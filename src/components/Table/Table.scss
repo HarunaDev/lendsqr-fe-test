@@ -34,7 +34,17 @@
     // white-space: nowrap;
     // overflow: hidden;
     // text-overflow: ellipsis;
-    white-space: nowrap;
+    // white-space: nowrap;
+
+    // padding: $spacing-md $spacing-lg;
+    // text-align: left;
+    // font-size: $font-sm;
+    // font-weight: $font-semibold;
+    // color: $text-muted;
+    // text-transform: uppercase;
+    // letter-spacing: 0.04em;
+    // white-space: nowrap;
+    // overflow: hidden;
 
     @include respond-to('xl') {
       padding: $spacing-sm $spacing-md;
@@ -93,6 +103,17 @@
     letter-spacing: inherit;
     cursor: pointer;
     padding: 0;
+    width: 100%;
+    min-width: 0;
+
+    .filter-btn__text {
+        flex: 1;
+        min-width: 10; // Crucial for text truncation in flex
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+      }
 
     svg {
       width: 16px;
