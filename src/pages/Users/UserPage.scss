@@ -1,0 +1,12 @@
+// Users Page Styles
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.users-page {
+  &__title {
+    @include heading($font-2xl, $font-medium);
+    color: $text-primary;
+    margin-bottom: $spacing-2xl;
+  }
+}

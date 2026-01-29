@@ -1,0 +1,72 @@
+// Stats Card Styles
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stats-card {
+  @include card;
+  padding: $spacing-lg $spacing-xl;
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    @include flex-center;
+    margin-bottom: $spacing-md;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    &--users {
+      background-color: $icon-users-bg;
+      svg { color: $icon-users; }
+    }
+
+    &--active {
+      background-color: $icon-active-bg;
+      svg { color: $icon-active; }
+    }
+
+    &--loans {
+      background-color: $icon-loans-bg;
+      svg { color: $icon-loans; }
+    }
+
+    &--savings {
+      background-color: $icon-savings-bg;
+      svg { color: $icon-savings; }
+    }
+  }
+
+  &__label {
+    font-size: $font-base;
+    font-weight: $font-medium;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__value {
+    font-size: $font-2xl;
+    font-weight: $font-semibold;
+    color: $text-primary;
+  }
+}

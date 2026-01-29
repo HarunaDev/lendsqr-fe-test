@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { User, UserStatus, UsersFilter } from '../../types/user';
 import { getOrganizations } from '../../services/mockApi';
-import './UsersTable.scss';
+import './Table.scss';
 
 interface UsersTableProps {
   users: User[];
