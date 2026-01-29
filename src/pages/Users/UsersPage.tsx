@@ -2,7 +2,7 @@ import { type JSX } from 'react'
 
 const UsersPage = (): JSX.Element => {
   return (
-    <div>UsersPage</div>
+    <div>Users</div>
   )
 }
 
