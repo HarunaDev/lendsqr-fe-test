@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.scss'
-import loginIllustration from '../../../public/img/pablo-sign-in.png';
+import loginIllustration from '../../assets/img/pablo-sign-in.png';
 
 // Logo component inline to ensure exact styling
 const Logo: React.FC = () => (

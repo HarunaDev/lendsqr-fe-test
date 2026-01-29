@@ -1,0 +1,126 @@
+// Sidebar Styles
+
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.sidebar {
+  padding-top: 10px;
+
+  @include respond-to('lg') {
+    padding-top: $spacing-xl;
+  }
+
+  &__logo {
+    display: block;
+    padding-left: 25px;
+    margin-bottom: 25px;
+  
+    @include respond-to('lg') {
+      display: none;
+      padding-left: 5px;
+    }
+  }
+
+  .sidebar__nav-label--with-margin {
+    margin-bottom: 2rem; // adjust as needed
+    margin-top: 1rem; // adjust as needed
+  }
+  
+  
+
+  &__org-switch {
+    padding: $spacing-2xl $spacing-lg $spacing-lg;
+    @include flex(flex-start, center);
+    gap: $spacing-sm;
+    color: $text-primary;
+    font-size: $font-md;
+    font-weight: $font-normal;
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__section {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__section-title {
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-sm;
+    font-weight: $font-medium;
+    color: $text-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__nav-item {
+    @include flex(flex-start, center);
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-lg;
+    color: $text-secondary;
+    font-size: $font-md;
+    font-weight: $font-normal;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background-color: rgba($primary, 0.06);
+      color: $text-primary;
+    }
+
+    &--active {
+      background-color: rgba($primary, 0.06);
+      border-left-color: $primary;
+      color: $text-primary;
+    }
+  }
+
+  &__footer {
+    padding: $spacing-xl $spacing-lg;
+    border-top: 1px solid $border-color;
+    margin-top: auto;
+  }
+
+  &__logout {
+    @include flex(flex-start, center);
+    gap: $spacing-sm;
+    color: $text-secondary;
+    font-size: $font-md;
+    cursor: pointer;
+
+    svg {
+        width: 16px;
+        height: 16px;
+      }
+
+    &:hover {
+      color: $status-blacklisted;
+    }
+  }
+
+  &__version {
+    margin-top: $spacing-md;
+    font-size: $font-sm;
+    color: $text-muted;
+  }
+}
