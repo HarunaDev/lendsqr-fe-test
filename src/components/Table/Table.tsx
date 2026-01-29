@@ -219,15 +219,15 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
           <tbody>
             {users.map((user) => (
               <tr key={user.id} className="users-table__body-row">
-                <td className="users-table__body-cell">{user.organization}</td>
+                <td className="users-table__body-cell truncate">{user.organization}</td>
                 <td className="users-table__body-cell">{user.username}</td>
-                <td className="users-table__body-cell">
-                  <span className="users-table__email">{user.email}</span>
+                <td className="users-table__body-cell truncate">
+                  <span className="users-table__email truncate">{user.email}</span>
                 </td>
-                <td className="users-table__body-cell">{user.phoneNumber}</td>
-                <td className="users-table__body-cell">{user.dateJoined}</td>
-                <td className="users-table__body-cell">
-                  <span className={getStatusClass(user.status)}>{user.status}</span>
+                <td className="users-table__body-cell truncate">{user.phoneNumber}</td>
+                <td className="users-table__body-cell truncate">{user.dateJoined}</td>
+                <td className="users-table__body-cell  w-full lg:w-auto">
+                  <span className={`${getStatusClass(user.status)} status-badge__text`}>{user.status}</span>
                 </td>
                 <td className="users-table__body-cell users-table__actions">
                   <div ref={activeDropdown === user.id ? dropdownRef : null}>

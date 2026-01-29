@@ -5,12 +5,13 @@
 
 .users-table-container {
   @include card;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .users-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
   
   &__header {
     background-color: $bg-white;
@@ -28,12 +29,54 @@
     color: $text-muted;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    // white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 
     @include respond-to('xl') {
       padding: $spacing-sm $spacing-md;
       font-size: $font-xs;
     }
+
+    @include respond-to('lg') {
+        .users-table__header-cell:nth-child(4),
+        .users-table__body-cell:nth-child(4), // Phone
+        .users-table__header-cell:nth-child(5),
+        .users-table__body-cell:nth-child(5) { // Date
+          display: none;
+        }
+      }
+
+      @include respond-to('md') {
+        .users-table,
+        .users-table thead {
+          display: none;
+        }
+      
+        .users-table__body-row {
+          display: block;
+          margin-bottom: $spacing-md;
+          border: 1px solid $border-color;
+          border-radius: $radius-sm;
+          padding: $spacing-md;
+        }
+      
+        .users-table__body-cell {
+          display: flex;
+          justify-content: space-between;
+          padding: $spacing-xs 0;
+          white-space: normal;
+      
+          &::before {
+            content: attr(data-label);
+            font-weight: $font-medium;
+            color: $text-muted;
+          }
+        }
+      }
+      
+      
   }
 
   &__filter-btn {
@@ -125,6 +168,14 @@
   border-radius: 100px;
   font-size: $font-sm;
   font-weight: $font-normal;
+  min-width: 70px;
+
+  &__text {
+    display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  }
 
   &--active {
     color: $status-active;
