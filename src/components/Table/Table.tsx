@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import type { User, UserStatus, UsersFilter } from '../../types/user';
 import { getOrganizations } from '../../services/mockApi';
 import './Table.scss';
+import FilterButton from './FilterButton';
+import FilterDropdown from './FilterDropdown';
+// import {FilterButton} from './FilterButton';
+// import FilterDropdown from './FilterDropdown';
 
 interface UsersTableProps {
   users: User[];
@@ -49,11 +53,11 @@ const ActivateIcon: React.FC = () => (
 const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) => {
   const navigate = useNavigate();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [showFilter, setShowFilter] = useState<boolean>(false);
+  // const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filters, setFilters] = useState<UsersFilter>({});
   const dropdownRef = useRef<HTMLDivElement>(null);
   const filterRef = useRef<HTMLDivElement>(null);
-
+  const [activeFilterColumn, setActiveFilterColumn] = useState<string | null>(null);
   const organizations = getOrganizations();
 
   useEffect(() => {
@@ -61,9 +65,9 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
       }
-      if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
-        setShowFilter(false);
-      }
+      // if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
+      //   setShowFilter(false);
+      // }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -81,13 +85,24 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
 
   const handleFilterSubmit = () => {
     onFilter(filters);
-    setShowFilter(false);
+    // setShowFilter(false);
+    setActiveFilterColumn(null);
   };
 
   const handleFilterReset = () => {
     setFilters({});
     onResetFilters();
-    setShowFilter(false);
+    // setShowFilter(false);
+    setActiveFilterColumn(null);
+  };
+
+  const handleFilterButtonClick = (columnName: string) => {
+    // setShowFilter(!showFilter);
+    setActiveFilterColumn(prev => prev === columnName ? null : columnName);
+  };
+
+  const handleFilterClose = () => {
+    setActiveFilterColumn(null);
   };
 
   const getStatusClass = (status: UserStatus): string => {
@@ -100,120 +115,138 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
         <table className="users-table">
           <thead className="users-table__header">
             <tr className="users-table__header-row">
-              <th className="users-table__header-cell" style={{ position: 'relative' }}>
+              <th className="users-table__header-cell" >
                 {/* <div ref={filterRef} style={{ display: 'inline-block' }}> */}
-                  <button 
-                    className="users-table__filter-btn"
-                    onClick={() => setShowFilter(!showFilter)}
-                    title="ORGANIZATION">
-                    
-                    <span className='filter-btn__text' >ORGANIZATION</span> 
-                    <FilterIcon />
-                  </button>
-                  {showFilter && (
-                  <div className="filter-dropdown" ref={filterRef}>
-                    <div className="filter-dropdown__field">
-                      <label className="filter-dropdown__label">Organization</label>
-                      <select 
-                        className="filter-dropdown__select"
-                        value={filters.organization || ''}
-                        onChange={(e) => handleFilterChange('organization', e.target.value)}
-                      >
-                        <option value="">Select</option>
-                        {organizations.map(org => (
-                          <option key={org} value={org}>{org}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="filter-dropdown__field">
-                      <label className="filter-dropdown__label">Username</label>
-                      <input 
-                        type="text" 
-                        className="filter-dropdown__input"
-                        placeholder="User"
-                        value={filters.username || ''}
-                        onChange={(e) => handleFilterChange('username', e.target.value)}
-                      />
-                    </div>
-                    <div className="filter-dropdown__field">
-                      <label className="filter-dropdown__label">Email</label>
-                      <input 
-                        type="email" 
-                        className="filter-dropdown__input"
-                        placeholder="Email"
-                        value={filters.email || ''}
-                        onChange={(e) => handleFilterChange('email', e.target.value)}
-                      />
-                    </div>
-                    <div className="filter-dropdown__field">
-                      <label className="filter-dropdown__label">Date</label>
-                      <input 
-                        type="date" 
-                        className="filter-dropdown__input"
-                        value={filters.date || ''}
-                        onChange={(e) => handleFilterChange('date', e.target.value)}
-                      />
-                    </div>
-                    <div className="filter-dropdown__field">
-                      <label className="filter-dropdown__label">Phone Number</label>
-                      <input 
-                        type="text" 
-                        className="filter-dropdown__input"
-                        placeholder="Phone Number"
-                        value={filters.phoneNumber || ''}
-                        onChange={(e) => handleFilterChange('phoneNumber', e.target.value)}
-                      />
-                    </div>
-                    <div className="filter-dropdown__field">
-                      <label className="filter-dropdown__label">Status</label>
-                      <select 
-                        className="filter-dropdown__select"
-                        value={filters.status || ''}
-                        onChange={(e) => handleFilterChange('status', e.target.value as UserStatus | '')}
-                      >
-                        <option value="">Select</option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Blacklisted">Blacklisted</option>
-                      </select>
-                    </div>
-                    <div className="filter-dropdown__actions">
-                      <button className="filter-dropdown__reset" onClick={handleFilterReset}>
-                        Reset
-                      </button>
-                      <button className="filter-dropdown__submit" onClick={handleFilterSubmit}>
-                        Filter
-                      </button>
-                    </div>
-                  </div>
+                  
+
+                  <FilterButton label="ORGANIZATION" onClick={() => handleFilterButtonClick('organization')} isActive={activeFilterColumn === 'organization'} />
+                  {activeFilterColumn === 'organization' && (
+                  
+                  <FilterDropdown
+                    isOpen={true}
+                    onClose={handleFilterClose}
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onSubmit={handleFilterSubmit}
+                    onReset={handleFilterReset}
+                    position='left'
+                  />
                   )}
                 {/* </div> */}
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn" title="USERNAME">
+                {/* <button className="users-table__filter-btn" title="USERNAME">
                   <span className='filter-btn__text'>USERNAME</span> <FilterIcon />
-                </button>
+                </button> */}
+                <FilterButton 
+                  label="USERNAME"
+                  onClick={() => handleFilterButtonClick('username')}
+                  isActive={activeFilterColumn === 'username'}
+                />
+
+{activeFilterColumn === 'username' && (
+                  <FilterDropdown
+                    isOpen={true}
+                    onClose={handleFilterClose}
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onSubmit={handleFilterSubmit}
+                    onReset={handleFilterReset}
+                    position="left"
+                  />
+                )}
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn" title="EMAIL">
+                {/* <button className="users-table__filter-btn" title="EMAIL">
                   <span className='filter-btn__text'>EMAIL</span> <FilterIcon />
-                </button>
+                </button> */}
+
+<FilterButton 
+                  label="EMAIL"
+                  onClick={() => handleFilterButtonClick('email')}
+                  isActive={activeFilterColumn === 'email'}
+                />
+                
+                {activeFilterColumn === 'email' && (
+                  <FilterDropdown
+                    isOpen={true}
+                    onClose={handleFilterClose}
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onSubmit={handleFilterSubmit}
+                    onReset={handleFilterReset}
+                    position="left"
+                  />
+                )}
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn" title="PHONE NUMBER">
+                {/* <button className="users-table__filter-btn" title="PHONE NUMBER">
                   <span className='filter-btn__text'>PHONE NUMBER</span> <FilterIcon />
-                </button>
+                </button> */}
+                <FilterButton 
+                  label="PHONE NUMBER"
+                  onClick={() => handleFilterButtonClick('phoneNumber')}
+                  isActive={activeFilterColumn === 'phoneNumber'}
+                />
+                
+                {activeFilterColumn === 'phoneNumber' && (
+                  <FilterDropdown
+                    isOpen={true}
+                    onClose={handleFilterClose}
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onSubmit={handleFilterSubmit}
+                    onReset={handleFilterReset}
+                    position="left"
+                  />
+                )}
+
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn" title="DATE JOINED">
+                {/* <button className="users-table__filter-btn" title="DATE JOINED">
                   <span className='filter-btn__text'>DATE JOINED</span> <FilterIcon />
-                </button>
+                </button> */}
+
+<FilterButton 
+                  label="DATE JOINED"
+                  onClick={() => handleFilterButtonClick('dateJoined')}
+                  isActive={activeFilterColumn === 'dateJoined'}
+                />
+                
+                {activeFilterColumn === 'dateJoined' && (
+                  <FilterDropdown
+                    isOpen={true}
+                    onClose={handleFilterClose}
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onSubmit={handleFilterSubmit}
+                    onReset={handleFilterReset}
+                    position="left"
+                  />
+                )}
               </th>
               <th className="users-table__header-cell">
-                <button className="users-table__filter-btn" title="STATUS">
+                {/* <button className="users-table__filter-btn" title="STATUS">
                   <span className='filter-btn__text'>STATUS</span> <FilterIcon />
-                </button>
+                </button> */}
+
+<FilterButton 
+                  label="STATUS"
+                  onClick={() => handleFilterButtonClick('status')}
+                  isActive={activeFilterColumn === 'status'}
+                />
+                
+                {activeFilterColumn === 'status' && (
+                  <FilterDropdown
+                    isOpen={true}
+                    onClose={handleFilterClose}
+                    filters={filters}
+                    onFilterChange={handleFilterChange}
+                    onSubmit={handleFilterSubmit}
+                    onReset={handleFilterReset}
+                    position="left"
+                  />
+                )}
               </th>
               <th className="users-table__header-cell"></th>
             </tr>

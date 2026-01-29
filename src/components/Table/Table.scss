@@ -31,6 +31,7 @@
     color: $text-muted;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    position: relative;
     // white-space: nowrap;
     // overflow: hidden;
     // text-overflow: ellipsis;
@@ -270,7 +271,7 @@
   box-shadow: $shadow-dropdown;
   padding: $spacing-lg;
   min-width: 270px;
-  z-index: 100;
+  z-index: 1000;
 
   &__field {
     margin-bottom: $spacing-md;
@@ -328,5 +329,6 @@
 // Responsive Table Wrapper
 .table-responsive {
   overflow-x: auto;
+  overflow-y: visible;
   @include custom-scrollbar;
 }
