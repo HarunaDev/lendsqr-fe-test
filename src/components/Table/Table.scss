@@ -15,10 +15,12 @@
   
   &__header {
     background-color: $bg-white;
+    
   }
 
   &__header-row {
     border-bottom: 1px solid $border-color;
+    
   }
 
   &__header-cell {
@@ -30,8 +32,8 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
     // white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
     white-space: nowrap;
 
     @include respond-to('xl') {
