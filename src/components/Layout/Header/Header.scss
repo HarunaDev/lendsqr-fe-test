@@ -9,6 +9,13 @@
   gap: $spacing-lg;
   padding: 10px 40px;
 
+  @include respond-to('lg') {
+    padding: 10px 15px;
+  }
+  @include respond-to('md') {
+    padding: 10px;
+  }
+
   &__left {
     @include flex(flex-start, center);
     gap: $spacing-md;
@@ -39,6 +46,7 @@
 
     @include respond-to('lg') {
       display: block;
+      margin-left: -10px;
     }
 
     svg {
