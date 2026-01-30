@@ -261,7 +261,7 @@ describe("Login Component", () => {
       vi.runAllTimers();
 
       await waitFor(() => {
-        expect(mockNavigate).toHaveBeenCalledWith("/dashboard/users");
+        expect(mockNavigate).toHaveBeenCalledWith("/users");
       });
       
       vi.useRealTimers();

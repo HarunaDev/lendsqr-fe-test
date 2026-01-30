@@ -75,7 +75,7 @@ const Table: React.FC<UsersTableProps> = ({ users, onFilter, onResetFilters }) =
   }, []);
 
   const handleViewUser = (userId: string) => {
-    navigate(`/dashboard/users/${userId}`);
+    navigate(`/users/${userId}`);
     setActiveDropdown(null);
   };
 

@@ -1,5 +1,6 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setAuthData, isAuthenticated } from '../../utils/auth';
 import './login.scss'
 import loginIllustration from '../../assets/img/pablo-sign-in.png';
 import LogoImg from '../../assets/img/lsqr-logo.png'
@@ -21,6 +22,13 @@ const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+//   redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/users', { replace: true });
+    }
+  }, [navigate]);
 
   const validateForm = (): boolean => {
     const newErrors: { email?: string; password?: string } = {};
@@ -50,15 +58,12 @@ const Login: React.FC = () => {
 
     // Simulate API call
     setTimeout(() => {
-      // Store auth state
-      localStorage.setItem('lendsqr_auth', JSON.stringify({
-        isAuthenticated: true,
-        user: { name: 'Adedeji', avatar: '' }
-      }));
-      
-      setIsLoading(false);
-      navigate('/dashboard/users');
-    }, 1000);
+        // Store auth data with email
+        setAuthData(email, 'Adedeji');
+        
+        setIsLoading(false);
+        navigate('/users');
+      }, 1000);
   };
 
   const togglePasswordVisibility = () => {

@@ -63,7 +63,7 @@ const UserDetails: React.FC = () => {
   }, [userId]);
 
   const handleBackClick = () => {
-    navigate('/dashboard/users');
+    navigate('/users');
   };
 
   const handleBlacklistUser = () => {

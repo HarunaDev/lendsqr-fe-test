@@ -42,30 +42,30 @@ const navItems = [
     { icon: <img src={dashboard} />, label: 'Dashboard', path: '/dashboard' }
   ]},
   { section: 'CUSTOMERS', items: [
-    { icon: <img src={users} />, label: 'Users', path: '/dashboard/users' },
-    { icon:  <img src={guarantors} />, label: 'Guarantors', path: '/dashboard/guarantors' },
-    { icon: <img src={loans} />, label: 'Loans', path: '/dashboard/loans' },
-    { icon: <img src={decisions} />, label: 'Decision Models', path: '/dashboard/decision-models' },
-    { icon: <img src={savings} />, label: 'Savings', path: '/dashboard/savings' },
-    { icon: <img src={loanRequest} />, label: 'Loan Requests', path: '/dashboard/loan-requests' },
-    { icon: <img src={whitelist} />, label: 'Whitelist', path: '/dashboard/whitelist' },
-    { icon: <img src={karma} />, label: 'Karma', path: '/dashboard/karma' }
+    { icon: <img src={users} />, label: 'Users', path: '/users' },
+    { icon:  <img src={guarantors} />, label: 'Guarantors', path: '/guarantors' },
+    { icon: <img src={loans} />, label: 'Loans', path: '/loans' },
+    { icon: <img src={decisions} />, label: 'Decision Models', path: '/decision-models' },
+    { icon: <img src={savings} />, label: 'Savings', path: '/savings' },
+    { icon: <img src={loanRequest} />, label: 'Loan Requests', path: '/loan-requests' },
+    { icon: <img src={whitelist} />, label: 'Whitelist', path: '/whitelist' },
+    { icon: <img src={karma} />, label: 'Karma', path: '/karma' }
   ]},
   { section: 'BUSINESSES', items: [
-    { icon: <img src={briefcase} />, label: 'Organization', path: '/dashboard/organization' },
-    { icon: <img src={loans} />, label: 'Loan Products', path: '/dashboard/loan-products' },
-    { icon: <img src={savingsProduct} />, label: 'Savings Products', path: '/dashboard/savings-products' },
-    { icon: <img src={feesCharges} />, label: 'Fees and Charges', path: '/dashboard/fees' },
-    { icon: <img src={transactions} />, label: 'Transactions', path: '/dashboard/transactions' },
-    { icon: <img src={services} />, label: 'Services', path: '/dashboard/services' },
-    { icon: <img src={servicesAccount} />, label: 'Service Account', path: '/dashboard/service-account' },
-    { icon: <img src={settlements} />, label: 'Settlements', path: '/dashboard/settlements' },
-    { icon: <img src={reports} />, label: 'Reports', path: '/dashboard/reports' }
+    { icon: <img src={briefcase} />, label: 'Organization', path: '/organization' },
+    { icon: <img src={loans} />, label: 'Loan Products', path: '/loan-products' },
+    { icon: <img src={savingsProduct} />, label: 'Savings Products', path: '/savings-products' },
+    { icon: <img src={feesCharges} />, label: 'Fees and Charges', path: '/fees' },
+    { icon: <img src={transactions} />, label: 'Transactions', path: '/transactions' },
+    { icon: <img src={services} />, label: 'Services', path: '/services' },
+    { icon: <img src={servicesAccount} />, label: 'Service Account', path: '/service-account' },
+    { icon: <img src={settlements} />, label: 'Settlements', path: '/settlements' },
+    { icon: <img src={reports} />, label: 'Reports', path: '/reports' }
   ]},
   { section: 'SETTINGS', items: [
-    { icon: <img src={preference} />, label: 'Preferences', path: '/dashboard/preferences' },
-    { icon: <img src={feesCharges} />, label: 'Fees and Pricing', path: '/dashboard/fees-pricing' },
-    { icon: <img src={audit} />, label: 'Audit Logs', path: '/dashboard/audit-logs' }
+    { icon: <img src={preference} />, label: 'Preferences', path: '/preferences' },
+    { icon: <img src={feesCharges} />, label: 'Fees and Pricing', path: '/fees-pricing' },
+    { icon: <img src={audit} />, label: 'Audit Logs', path: '/audit-logs' }
   ]}
 ];
 
@@ -86,8 +86,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('lendsqr_auth');
-    navigate('/');
+    localStorage.removeItem('lendsqr_user_details');
+    navigate('/login');
   };
 
   const isActive = (path: string | null): boolean => {
