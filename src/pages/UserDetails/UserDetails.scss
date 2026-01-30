@@ -4,10 +4,6 @@
 @import '../../styles/mixins';
 
 .user-details {
-    max-width: 100%;
-  overflow-x: hidden;
-  box-sizing: border-box;
-
   &__back {
     @include flex(flex-start, center);
     gap: $spacing-sm;
@@ -48,13 +44,7 @@
     gap: $spacing-md;
 
     @include respond-to('md') {
-      flex-direction: column;
       width: 100%;
-
-      button {
-        width: 100%;
-        text-align: center;
-      }
     }
   }
 
@@ -93,7 +83,7 @@
 // User Profile Card
 .user-profile-card {
   @include card;
-  padding: $spacing-lg $spacing-md;
+  padding: $spacing-xl $spacing-lg;
   margin-bottom: $spacing-lg;
 
   &__top {
@@ -105,7 +95,7 @@
 
     @include respond-to('md') {
       flex-direction: column;
-      align-items: stretch;
+      align-items: flex-start;
       gap: $spacing-md;
     }
   }
@@ -162,9 +152,6 @@
       border-top: 1px solid $border-color;
       padding-top: $spacing-md;
       width: 100%;
-      display: flex;
-    justify-content: space-between;
-    align-items: center;
     }
   }
 
@@ -193,10 +180,6 @@
       border-left: none;
       padding-top: $spacing-md;
       width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     }
   }
 
@@ -211,20 +194,39 @@
     color: $primary;
   }
 
+//   &__tabs {
+//     @include flex(flex-start, center);
+//     gap: 0;
+//     padding-top: $spacing-lg;
+//     max-width: 100%;
+//     min-width: 0;
+//   overflow-x: auto;
+// //   overflow-y: hidden;
+
+// padding-left: $spacing-sm;
+//   padding-right: $spacing-sm;
+
+
+//   -webkit-overflow-scrolling: touch;
+//     // overflow-x: auto;
+//     @include custom-scrollbar;
+//   }
+
   &__tabs {
     @include flex(flex-start, center);
     gap: 0;
     padding-top: $spacing-lg;
-    max-width: 100%;
-    -webkit-overflow-scrolling: touch;
-    flex-shrink: 0;
-
-    &::-webkit-scrollbar {
-        display: none;
-      }
-
     overflow-x: auto;
     @include custom-scrollbar;
+    -webkit-overflow-scrolling: touch;
+
+    @include respond-to('md') {
+        padding-top: $spacing-md;
+    }
+
+    @include respond-to('sm') {
+        padding: $spacing-md;
+    }
   }
 
   &__tab {
@@ -238,7 +240,23 @@
     position: relative;
     white-space: nowrap;
     transition: all 0.2s ease;
-
+    flex-shrink: 0; // Prevents tabs from shrinking too much
+  
+    // Add responsive styles
+    @include respond-to('md') {
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-sm ;
+      white-space: normal; // Allow wrapping
+    text-align: center;
+    min-width: 80px;
+    }
+  
+    @include respond-to('sm') {
+      padding: $spacing-xs $spacing-sm;
+      font-size: $font-sm;
+      min-width: auto; // Allow tabs to be smaller on mobile
+    }
+  
     &::after {
       content: '';
       position: absolute;
@@ -249,14 +267,14 @@
       background-color: transparent;
       transition: background-color 0.2s ease;
     }
-
+  
     &:hover {
       color: $primary;
     }
-
+  
     &--active {
       color: $primary;
-
+  
       &::after {
         background-color: $primary;
       }
@@ -267,7 +285,7 @@
 // User Info Section
 .user-info-section {
   @include card;
-  padding: $spacing-lg $spacing-md;
+  padding: $spacing-xl $spacing-lg;
 }
 
 .info-group {
@@ -321,7 +339,6 @@
     font-weight: $font-medium;
     color: $text-secondary;
     word-break: break-word;
-    overflow-wrap: anywhere;
   }
 }
 

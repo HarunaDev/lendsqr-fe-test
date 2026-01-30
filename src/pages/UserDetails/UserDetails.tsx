@@ -175,7 +175,7 @@ const UserDetails: React.FC = () => {
           </div>
         </div>
 
-        {/* <div className="user-profile-card__tabs">
+        <div className="user-profile-card__tabs">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -185,7 +185,7 @@ const UserDetails: React.FC = () => {
               {tab.label}
             </button>
           ))}
-        </div> */}
+        </div>
       </div>
 
       {activeTab === 'general' && (
