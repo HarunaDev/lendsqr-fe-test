@@ -13,3 +13,11 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: () => {},
   }),
 });
+
+Object.defineProperty(window, 'Image', {
+    value: class {
+        onload = () => {};
+        onerror = () => {};
+        src = '';
+    }
+})
