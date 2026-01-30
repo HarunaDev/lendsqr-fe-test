@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.scss'
 import loginIllustration from '../../assets/img/pablo-sign-in.png';
+import LogoImg from '../../assets/img/lsqr-logo.png'
 
 // Logo component inline to ensure exact styling
 const Logo: React.FC = () => (
@@ -68,9 +69,10 @@ const Login: React.FC = () => {
     <div className="login-page">
       <div className="login-left">
         <div className="login-left__logo">
-          <Logo />
+          {/* <Logo /> */}
+          <img src={LogoImg} alt="" />
         </div>
-        <div className="login-left__illustration">
+        <div className="login-left__illustration ">
           <img src={loginIllustration} alt="Welcome illustration" />
         </div>
       </div>

@@ -20,7 +20,7 @@
   padding: $spacing-xl $spacing-3xl;
   display: flex;
   flex-direction: column;
-  background-color: $bg-white;
+  background-color: #fdfdfb;
 
   @include respond-to('xl') {
     padding: $spacing-xl $spacing-2xl;
@@ -32,7 +32,8 @@
   }
 
   &__logo {
-    margin-bottom: $spacing-3xl;
+    margin-bottom: $spacing-xl;
+    margin-top: $spacing-3xl;
 
     @include respond-to('lg') {
       margin-bottom: $spacing-xl;
