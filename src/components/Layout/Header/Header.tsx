@@ -1,5 +1,7 @@
 import React from 'react';
 import './Header.scss';
+import bellImg from "../../../assets/img/header-notification.png"
+import avatar from "../../../assets/img/avatar.png"
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -67,12 +69,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, userName }) => {
         <a href="#docs" className="header__docs">Docs</a>
 
         <div className="header__notifications">
-          <BellIcon />
+          {/* <BellIcon /> */}
+          <img src={bellImg} alt="" />
         </div>
 
         <div className="header__profile">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+            src={avatar}
             alt="User avatar"
             className="header__avatar"
           />

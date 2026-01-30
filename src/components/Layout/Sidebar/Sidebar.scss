@@ -14,7 +14,8 @@
     display: block;
     width: 170px;
     padding-left: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   
     @include respond-to('lg') {
       display: block;

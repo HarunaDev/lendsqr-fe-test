@@ -7,7 +7,8 @@
   @include flex-between;
   width: 100%;
   gap: $spacing-lg;
-  padding: 10px 40px;
+  padding: 20px 40px;
+  background-color: white;
 
   @include respond-to('lg') {
     padding: 10px 15px;

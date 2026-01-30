@@ -20,7 +20,7 @@
   padding: $spacing-xl $spacing-3xl;
   display: flex;
   flex-direction: column;
-  background-color: #fdfdfb;
+  background-color: #fffffb;
 
   @include respond-to('xl') {
     padding: $spacing-xl $spacing-2xl;
