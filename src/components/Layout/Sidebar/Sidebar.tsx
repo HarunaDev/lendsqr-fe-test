@@ -86,7 +86,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('lendsqr_user_details');
+    localStorage.removeItem('lendsqr_auth');
     navigate('/login');
   };
 
