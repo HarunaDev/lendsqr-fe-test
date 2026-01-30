@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.scss';
 import bellImg from "../../../assets/img/header-notification.png"
 import avatar from "../../../assets/img/avatar.png"
+import logo from "../../../assets/img/lsqr-logo.png"
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -45,12 +46,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, userName }) => {
         </button>
 
         <div className="header__logo">
-          <svg width="120" height="30" viewBox="0 0 174 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* <svg width="120" height="30" viewBox="0 0 174 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0" y="4" width="25" height="25" rx="4" fill="#39CDCC"/>
             <path d="M7 10V24H17V20H11V10H7Z" fill="white"/>
             <text x="32" y="26" fontFamily="Work Sans, sans-serif" fontWeight="700" fontSize="28" fill="#213F7D">lends</text>
             <text x="110" y="26" fontFamily="Work Sans, sans-serif" fontWeight="700" fontSize="28" fill="#39CDCC">qr</text>
-          </svg>
+          </svg> */}
+          <img src={logo} alt="" />
         </div>
 
         <div className="header__search">
