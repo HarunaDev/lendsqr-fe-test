@@ -42,7 +42,7 @@ const UserDetails: React.FC = () => {
 
   useEffect(() => {
     if (userId) {
-      setIsLoading(true);
+    //   setIsLoading(true);
       
       // First try to get from localStorage
       const cachedUser = getUserFromLocalStorage(userId);

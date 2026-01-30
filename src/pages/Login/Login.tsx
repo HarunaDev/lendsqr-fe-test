@@ -1,19 +1,9 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, useEffect, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setAuthData, isAuthenticated } from '../../utils/auth';
 import './login.scss'
 import loginIllustration from '../../assets/img/pablo-sign-in.png';
 import LogoImg from '../../assets/img/lsqr-logo.png'
-
-// Logo component inline to ensure exact styling
-const Logo: React.FC = () => (
-  <svg width="174" height="36" viewBox="0 0 174 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="4" width="25" height="25" rx="4" fill="#39CDCC"/>
-    <path d="M7 10V24H17V20H11V10H7Z" fill="white"/>
-    <text x="32" y="26" fontFamily="Work Sans, sans-serif" fontWeight="700" fontSize="28" fill="#213F7D">lends</text>
-    <text x="110" y="26" fontFamily="Work Sans, sans-serif" fontWeight="700" fontSize="28" fill="#39CDCC">qr</text>
-  </svg>
-);
 
 const Login: React.FC = () => {
   const navigate = useNavigate();

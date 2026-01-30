@@ -16,13 +16,6 @@ const SearchIcon: React.FC = () => (
   </svg>
 );
 
-const BellIcon: React.FC = () => (
-  <svg viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.3333 8C17.3333 6.4087 16.7357 4.88258 15.6605 3.75736C14.5852 2.63214 13.125 2 11.6 2C10.075 2 8.61479 2.63214 7.53958 3.75736C6.46437 4.88258 5.86667 6.4087 5.86667 8C5.86667 15 2.8 17 2.8 17H20.4C20.4 17 17.3333 15 17.3333 8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M13.2295 21C13.0295 21.3031 12.7578 21.5547 12.4389 21.7295C12.1201 21.9044 11.7639 21.9965 11.4018 21.9965C11.0396 21.9965 10.6834 21.9044 10.3646 21.7295C10.0457 21.5547 9.77398 21.3031 9.57397 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
 const ChevronDownIcon: React.FC = () => (
   <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
